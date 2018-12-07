@@ -1,0 +1,119 @@
+{{> header-not-logged}}
+{{#if errorMessage}}
+    {{> error-message}}
+{{/if}}
+<section class="jumbotron rounded w-85 mx-auto mt-4 section-shadow" id="register-section">
+    <h2 class="text-center pb-3" id="lasdsdjksdf">Register</h2>
+    <form action="" method="post">
+        <div class="row offset-lg-1">
+            <div class="col-lg-5 mb-1">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Enter first name:</p>
+                <div class="input-group mb-2 bg-info">
+                    <div class="input-group-prepend ">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <input type="text" name="firstName"class="form-control font-weight-bold text-primary" id="firstnameInput" placeholder="First name..." value="{{reqUser.firstName}}">
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Enter last name:</p>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <input type="text" name="lastName" class="form-control font-weight-bold text-primary" id="lastnameInput" placeholder="Last name..." value="{{reqUser.lastName}}">
+                </div>
+            </div>
+        </div>
+        <div class="row offset-lg-1">
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Enter username:</p>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <input type="text" name="username" class="form-control font-weight-bold text-primary" id="usernameInput" placeholder="Username..." value="{{reqUser.username}}">
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Enter e-mail:</p>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend border border-secondary">
+                        <div class="input-group-text bg-blue"><i class="fas fa-envelope text-white"></i></div>
+                    </div>
+                    <input type="email" name="email" class="form-control font-weight-bold text-primary" id="emailInput" placeholder="E-mail..." value="{{reqUser.email}}">
+                </div>
+            </div>
+        </div>
+        <div class="row offset-lg-1 mb-2">
+            <div class="col-lg-5 ">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Роля:</p>
+                <select class="custom-select font-weight-bold" name="role" id="role">
+                    <option value="Student" selected>Ученик</option>
+                    <option value="Teacher">Учител</option>
+                </select>
+            </div>
+            <div class="col-lg-5 " id="class-menu">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Клас:</p>
+                <select class="custom-select font-weight-bold" name="class" id="grade">
+                    <option value="5">5 клас</option>
+                    <option value="6">6 клас</option>
+                    <option value="7">7 клас</option>
+                    <option value="8" selected>8 клас</option>
+                    <option value="9">9 клас</option>
+                    <option value="10">10 клас</option>
+                    <option value="11">11 клас</option>
+                    <option value="12">12 клас</option>
+                </select>
+            </div>
+            <div class="col-lg-5 display-none" id="subject-menu">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Предмет:</p>
+                <select class="custom-select font-weight-bold" name="subjects[sub]" id="subject"multiple>
+                    <option value="bulgarian">Български език и литература</option>
+                    <option value="english">Английски език</option>
+                    <option value="german">Немски език</option>
+                    <option value="russian">Руски език</option>
+                    <option value="maths">Математика</option>
+                    <option value="informatics">Информатика</option>
+                    <option value="technologies">Информационни технологии</option>
+                    <option value="history">История</option>
+                    <option value="geography">География</option>
+                    <option value="psychology">Психология и логика</option>
+                    <option value="biologie">Биология</option>
+                    <option value="physics">Физика и астрономия</option>
+                    <option value="philosophy">Философия</option>
+                    <option value="science">Химия и опазване на околната среда</option>
+                    <option value="music">Музика</option>
+                    <option value="world-and-personality">Свят и личност</option>
+                    <option value="art">Изобразително изкуство</option>
+                    <option value="sport">Физическо възпитание и спорт</option>
+                </select>
+                <p class="font-italic h6">* Press CTRL if you want to select more than once subjects</p>
+            </div>
+        </div>
+        <div class="row offset-lg-1">
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Enter your password:</p>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend ">
+                        <div class="input-group-text bg-blue"><i class="fas fa-lock text-white"></i></div>
+                    </div>
+                    <input type="password" name="password" class="form-control font-weight-bold text-primary" id="passwordInput" placeholder="Password..." value="{{reqUser.password}}">
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Repeat your password:</p>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-blue"><i class="fas fa-lock text-white" ></i></div>
+                    </div>
+                    <input type="password" name="repeatedPassword" class="form-control font-weight-bold text-primary" id="repeatedPasswordInput" placeholder="Repeated password..." value="{{reqUser.repeatedPassword}}">
+                </div>
+            </div>
+        </div>
+        <div class="d-block text-center">
+            <input type="submit" class="btn btn-outline-info p-3 m-3 mx-auto" value="SUBMIT">
+            <p class="mt-2">Already have an account? <a href="/users/login" class="btn btn-info p-2 ml-2">Sign In</a></p>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,40 @@
+{{#if currentUser}}
+    {{> header-logged}}
+{{else}}
+    {{> header-not-logged}}
+{{/if}}
+<section class="container mx-auto mt-5 jumbotron section-shadow">
+    <h1 class="h2 text-center border-bottom border-dark pb-3 mb-2 text-blue">Моят профил</h1>
+    <section class="mx-auto">
+        <section class="row text-center m-auto">
+            <div class="col-lg-5">
+                <i class="fas fa-user size-10  mt-5 m-3" id="profile-icon-user"></i>
+            </div>
+            <div class="col-lg-6 mt-3">
+                <div class="col">
+                    <label class="col-lg-12">
+                        <h4>Потребителско име: {{user.username}}</h4>
+                    </label>
+                    <label class="col-lg-12">
+                        <h4>Име: {{user.firstName}}</h4>
+                    </label>
+                    <label class="col-lg-12">
+                        <h4>Фамилия: {{user.lastName}}</h4>
+                    </label>
+                    <label class="col-lg-12">
+                        <h4>Роли: {{user.roles}}</h4>
+                    </label>
+                    <label class="col-lg-12">
+                        <h4>Поща: {{user.email}}</h4>
+                    </label>
+                    <label class="col-lg-12">
+                        <h4>XP: {{user.points}}</h4>
+                    </label>
+                </div>
+            </div>
+
+            </table>
+        </section>
+
+    </section>
+</section>

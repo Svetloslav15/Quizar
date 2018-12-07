@@ -1,0 +1,20 @@
+module.exports = {
+    bulgarian: "Български език и литература",
+    english: "Английски език",
+    german: "Немски език",
+    russian: "Руски език",
+    maths: "Математика",
+    informatics: "Информатика",
+    technologies: "Информационни технологии",
+    history:"История",
+    geography:"География",
+    psychology:"Психология",
+    biologie: "Биология",
+    physics: "Физика и астрономия",
+    philosophy: "Философия",
+    science: "Химия и опазване на околната среда",
+    music:"Музика",
+    "world-and-personality": "Свят и личност",
+    art: "Изобразително изкуство",
+    sport: "Физическо възпитание и спорт"
+};

@@ -1,0 +1,40 @@
+{{#if currentUser}}
+    {{> header-logged}}
+{{else}}
+    {{> header-not-logged}}
+{{/if}}
+<section class="container mx-auto mt-5 jumbotron section-shadow border-orange">
+    <h1 class="h2 text-center border-bottom border-dark pb-3 mb-2 text-blue">Въпроси</h1>
+    <section class="row text-center ml-auto">
+        {{#if questions}}
+            <table class=" bg-skyblue text-white table">
+                <tr class="">
+                    <th class="border border-white bg-darkblue">Описание</th>
+                    <th class="border border-white bg-darkblue p-1"></th>
+                    <th class="border border-white bg-darkblue p-1"></th>
+                </tr>
+                {{#each questions}}
+                    <div class="bg-blue text-white rounded row mb-2 w-100">
+                        <div class="mx-auto row">
+                            <tr class="">
+                                <td class="border border-white h5 bg-darkblue">{{description}}.</td>
+                                <td class="border-blue h5 bg-white">
+                                    <a href="/teachers/questions/edit/{{_id}}" class="link-white">
+                                        <button class="btn btn-warning">Edit</button>
+                                    </a>
+                                </td>
+                                <td class="border-blue h5 bg-white">
+                                    <a href="/teachers/questions/delete/{{_id}}" class="link-white">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </div>
+                    </div>
+                {{/each}}
+            </table>
+        {{else}}
+            <div class="text-center bg-blue text-white h3 p-2 col-lg-12">Няма добавени въпроси</div>
+        {{/if}}
+    </section>
+</section>

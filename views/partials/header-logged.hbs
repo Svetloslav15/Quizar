@@ -1,0 +1,79 @@
+<header>
+    <nav class="navbar navbar-expand-lg navigation">
+        <a class="navbar-brand logo font-weight-bold ml-3 text-white" href="/" id="logo">Quizar</a>
+        <button id="btn-toggle" class="navbar-toggler bg-white" type="button" data-toggle="collapse"
+                data-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars text-blue"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item custom-nav-link">
+                    <a class="text-white text-center nav-link font-weight-bold custom-nav-a" href="/game/play">Започни
+                        игра</a>
+                </li>
+                <li class="nav-item custom-nav-link text-center">
+                    <a class="text-white nav-link font-weight-bold custom-nav-a" href="/rules">Правила</a>
+                </li>
+                <li class="nav-item custom-nav-link text-center">
+                    <a class="text-white nav-link font-weight-bold custom-nav-a" href="/rankings">Блог</a>
+                </li>
+                <li class="nav-item custom-nav-link">
+                    <a class="text-white text-center nav-link font-weight-bold custom-nav-a" href="/chatroom">Чат
+                        стая</a>
+                </li>
+
+            </ul>
+        </div>
+        <li class="nav-item row mx-auto mt-2" id="hi-li">
+            <a class="text-white text-center nav-link font-weight-bold h5 my-2" href="#"
+               id="hello-header">Здравей, {{currentUser.username}}!</a>
+            <i class="far fa-user text-white profile-icon" id="profile-icon"></i>
+        </li>
+    </nav>
+    <div class="menu bg-blue col-lg-3 float-right p-3 text-white" id="my-profile-div">
+        <div class="row menu-div">
+            <i class="fas fa-user-circle size-i ml-3"></i>
+            <div class="ml-3">
+                <p>{{currentUser.firstName}} {{currentUser.lastName}}</p>
+                <p>{{currentUser.points}} XP</p>
+            </div>
+        </div>
+        <hr class="text-center bg-white mb-4">
+        <ul class="navbar-nav">
+            <li class="nav-item row mx-2 mb-3">
+                <i class="fas fa-info mr-3 icon mt-1 text-white"></i>
+                <a href="/myprofile/{{currentUser._id}}" class="nav-link text-white menu-profile-link">Обща информация</a>
+            </li>
+            <li class="nav-item row mx-2 mb-3">
+                <i class="fas fa-user-secret mr-3 icon mt-1 text-white"></i>
+                <a href="#" class="nav-link text-white menu-profile-link">Дневни мисии</a>
+            </li>
+            <li class="nav-item row mx-2 mb-3">
+                <i class="fas fa-star mt-2 mr-3 text-white text-white"></i>
+                <a href="#" class="nav-link mr-4 text-white menu-profile-link">Класиране</a>
+            </li>
+            {{#if currentUser.isAdmin}}
+                <li class="nav-item row mx-2 mb-3">
+                    <i class="fas fa-unlock mr-3 icon mt-1 text-white"></i>
+                    <a href="/administration" class="nav-link text-white menu-profile-link">Администрация</a>
+                </li>
+            {{/if}}
+            {{#if currentUser.isTeacher}}
+                <li class="nav-item row mx-2 mb-3">
+                    <i class="fas fa-unlock mr-3 icon mt-1 text-white"></i>
+                    <a href="/teachers/questions" class="nav-link text-white menu-profile-link">Учителски панел</a>
+                </li>
+            {{/if}}
+            <li class="nav-item row mx-2 mb-3">
+                <i class="fas fa-sign-out-alt mr-3 icon mt-1 text-white"></i>
+                <a href="/users/logout" class="nav-link text-white menu-profile-link">Излезни</a>
+            </li>
+            <li class="nav-item m-auto text-white">
+                <i class="fas fa-arrow-circle-up menu-profile-link" id="menu-arrow-collapse"></i>
+            </li>
+        </ul>
+    </div>
+    <div class="border-div"></div>
+</header>
