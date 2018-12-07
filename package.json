@@ -25,6 +25,6 @@
     "socket.io": "2.1.1"
   },
   "scripts": {
-    "start": "start.js"
+    "start": "node start.js"
   }
 }
