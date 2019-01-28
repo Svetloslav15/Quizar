@@ -10,10 +10,9 @@ module.exports = (app) => {
     app.engine('.hbs', expressHandlebars({
         defaultLayout: 'main',
         extname: '.hbs',
-        partialsDir: 'views/partials'
+        partialsDir: 'views/common'
     }));
     app.set('view engine', '.hbs');
-    app.use(express.static('public'));
     app.use(cookieParser());
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(session({

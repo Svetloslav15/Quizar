@@ -17,9 +17,5 @@ io.on("connection", function (socket) {
     socket.on('message', function (data) {
         socket.broadcast.emit("message", data);
     });
-
-    socket.on("typing", function (data) {
-        socket.broadcast.emit('typing', data);
-    });
 });
 console.log(`Server listening on port ${settings.port}...`);
