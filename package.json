@@ -1,27 +1,26 @@
 {
-  "name": "blog-system",
-  "version": "0.0.1",
-  "description": "Blog System",
+  "name": "Quizar-rest-full",
+  "version": "1.0.0",
+  "description": "Quizar Rest API",
   "main": "index.js",
-  "engines": {
-    "node": "7.10.0",
-    "npm": "4.2.0"
-  },
-  "keywords": [
-    "blog",
-    "system"
-  ],
-  "author": "IK",
+  "author": "Svetloslav Novoselski",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.17.2",
     "cookie-parser": "1.4.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "express": "4.15.3",
     "express-handlebars": "3.0.0",
-    "express-session": "1.15.3",
+    "express-session": "^1.15.3",
+    "jsonwebtoken": "^8.4.0",
     "mongoose": "4.10.4",
+    "nodemon": "^1.18.9",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
-    "socket.io": "^2.1.1"
+    "socket.io": "2.1.1"
+  },
+  "scripts": {
+    "start": "node start.js"
   }
 }
