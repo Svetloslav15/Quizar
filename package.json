@@ -11,6 +11,9 @@
     "blog",
     "system"
   ],
+  "scripts": {
+    "start": "node start.js"
+  },
   "author": "IK",
   "license": "MIT",
   "dependencies": {
