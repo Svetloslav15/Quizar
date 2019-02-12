@@ -63,6 +63,11 @@
                             </a>
                         </div></h4>
                     <p>{{comment}}</p>
+                    {{#if isAdmin}}
+                        <a href="/forum/comments/delete/{{_id}}/{{questionId}}" class="mr-auto">
+                            <button class="btn btn-danger mb-2 mr-auto">DELETE</button>
+                        </a>
+                    {{/if}}
                 </div>
             {{/each}}
         {{else}}

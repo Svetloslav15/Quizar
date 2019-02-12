@@ -1,4 +1,4 @@
-let socket = io.connect(`https://quizar15.herokuapp.com`);
+let socket = io.connect(`http://localhost:5000`);
 
 (() => {
     $('#message').on("keypress", function () {

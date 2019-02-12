@@ -57,6 +57,8 @@ module.exports = (app) => {
     app.get('/forum/questions/dislike/:id', auth.isAuthenticated, controllers.forum.dislikeQuestionPost);
     app.get('/forum/comments/like/:commentId/:questionId', auth.isAuthenticated, controllers.forum.likeCommentPost);
     app.get('/forum/comments/dislike/:commentId/:questionId', auth.isAuthenticated, controllers.forum.dislikeCommentPost);
+    app.get('/forum/questions/delete/:id', auth.isInRole('Admin'), controllers.forum.deleteQuestionById);
+    app.get('/forum/comments/delete/:commentId/:questionId', auth.isInRole('Admin'), controllers.forum.deleteCommentId);
 
     app.all('*', (req, res) => {
         res.render('users/NotFound');

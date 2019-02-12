@@ -8,7 +8,6 @@
                     <a href="/forum/{{key}}?page=1" class="forum-a">{{value}}</a>
                 </li>
             {{/each}}
-
         </ul>
     </section>
     <section class="col-md-9">
@@ -27,15 +26,20 @@
                         </div>
                     </div>
                     <p>{{content}}</p>
+                    {{#if isAdmin}}
+                        <a href="/forum/questions/delete/{{_id}}">
+                            <button class="btn btn-danger mb-2 mr-auto">DELETE</button>
+                        </a>
+                    {{/if}}
                 </div>
             {{/each}}
             <ul class="pagination justify-content-center">
                 {{#if previousPage}}
-                    <li class="page-item"><a class="page-link" href="/forum/{{subject}}?page={{previousPage}}">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="/forum/{{subject}}?page={{previousPage}}">Назад</a></li>
                 {{/if}}
                 <li class="page-item"><a class="page-link page-link-active" href="#">{{currentPage}}</a></li>
                 {{#if nextPage}}
-                    <li class="page-item"><a class="page-link" href="/forum/{{subject}}?page={{nextPage}}">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="/forum/{{subject}}?page={{nextPage}}">Напред</a></li>
                 {{/if}}
             </ul>
         {{else}}

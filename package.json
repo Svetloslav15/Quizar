@@ -1,23 +1,17 @@
 {
-  "name": "Quizar",
-  "version": "1.0.0",
-  "description": "Educational System for fun",
-  "main": "start.js",
+  "name": "blog-system",
+  "version": "0.0.1",
+  "description": "Blog System",
+  "main": "index.js",
   "engines": {
     "node": "7.10.0",
     "npm": "4.2.0"
   },
   "keywords": [
-    "education",
-    "system",
-    "school",
-    "fun",
-    "quiz"
+    "blog",
+    "system"
   ],
-  "scripts": {
-    "start": "node start.js"
-  },
-  "author": "Svetloslav Novoselski",
+  "author": "IK",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.17.2",
@@ -28,6 +22,6 @@
     "mongoose": "4.10.4",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
-    "socket.io": "2.1.1"
+    "socket.io": "^2.1.1"
   }
 }

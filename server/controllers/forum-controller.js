@@ -34,10 +34,13 @@ module.exports = {
             .sort({date: 'descending'})
             .skip((currentPage - 1) * 10)
             .limit(10);
+        let isAdmin = req.user.roles.indexOf("Admin") > -1;
+
         questions.forEach(x => {
             x.content = x.content.substring(0, 50) + '...';
             x.likes = x.likes.length;
             x.dislikes = x.dislikes.length;
+            x.isAdmin = isAdmin
         });
         res.render('forum/main', {elements, questions, currentPage, previousPage, nextPage});
     },
@@ -77,10 +80,13 @@ module.exports = {
         }).sort({date: 'descending'})
             .skip((currentPage - 1) * 10)
             .limit(10);
+        let isAdmin = req.user.roles.indexOf("Admin") > -1;
+
         questions.forEach(x => {
             x.content = x.content.substring(0, 100) + '...';
             x.likes = x.likes.length;
             x.dislikes = x.dislikes.length;
+            x.isAdmin = isAdmin;
         });
         res.render('forum/main-filtered', {elements, questions, currentPage, previousPage, nextPage, subject});
     },
@@ -156,9 +162,11 @@ module.exports = {
         let comments = await ForumComment.find({
             questionId: questionId
         }).sort({date: 'ascending'});
+        let isAdmin = req.user.roles.indexOf("Admin") > -1;
         comments.forEach(x => {
             x.likes = x.likes.length;
             x.dislikes = x.dislikes.length;
+            x.isAdmin = isAdmin;
         });
         question.likes = question.likes.length;
         question.dislikes = question.dislikes.length;
@@ -261,5 +269,20 @@ module.exports = {
             }
         });
         res.redirect(`/forum/questions/${questionid}`);
+    },
+    deleteQuestionById: (req, res) => {
+        let id = req.params.id;
+        ForumQuestion.findByIdAndRemove(id)
+            .then(() => {
+                res.redirect('/forum?page=1');
+            }).catch(console.error)
+    },
+    deleteCommentId: (req, res) => {
+        let commentId = req.params.commentId;
+        let questionId = req.params.questionId;
+        ForumComment.findByIdAndRemove(commentId)
+            .then(() => {
+                res.redirect(`/forum/questions/${questionId}`);
+            }).catch(console.error)
     }
 }
