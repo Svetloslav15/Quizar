@@ -1,6 +1,6 @@
 {
   "name": "Quizar",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "quizar",
   "main": "index.js",
   "engines": {
@@ -12,7 +12,7 @@
     "system"
   ],
   "scripts": {
-    "start": "node start.js"
+    "start": "node index.js"
   },
   "author": "IK",
   "license": "MIT",
