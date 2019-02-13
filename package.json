@@ -1,7 +1,7 @@
 {
-  "name": "blog-system",
+  "name": "Quizar",
   "version": "0.0.1",
-  "description": "Blog System",
+  "description": "quizar",
   "main": "index.js",
   "engines": {
     "node": "7.10.0",
