@@ -106,6 +106,7 @@ module.exports = {
         let subject = req.query.subject;
         let className = req.query.class;
         let questions = await Question.find({subject: subject, class: className});
+        res.render('admins/list-questions', {questions})
     },
     editQuestionGet: (req, res) => {
         let description = req.body.description;
@@ -175,7 +176,13 @@ module.exports = {
         };
         if (description.trim() != "" && difficulty && answerA.trim() != "" && answerB.trim() != "" &&
             answerC.trim() != "" && answerD.trim() != "" && correctAnswer.trim() != "" && subject && classQ && author){
-            Question.create(obj).then(() => {
+            Question.create(obj).then(async () => {
+                let user = await Student.findById(req.user.id);
+                if (!user){
+                    user = await Teacher.findById(req.user.id);
+                }
+                user.points += 3;
+                user.save();
                 res.locals.successMessage = "You added new question successfully!";
                 res.render('admins/addQuestionView');
                 return;

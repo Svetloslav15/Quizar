@@ -25,7 +25,7 @@ module.exports = (app) => {
     app.get('/administration/questions/add', auth.isInRole("Admin"), controllers.admin.addQuestionGet);
     app.post('/administration/questions/add', auth.isInRole("Admin"), controllers.admin.addQuestionPost);
 
-    app.get('/administration/questions/:subject/:class', auth.isInRole("Admin"), controllers.admin.filteredQuestionsGet);
+    app.post('/administration/questions/:subject/:class', auth.isInRole("Admin"), controllers.admin.filteredQuestionsGet);
     app.get('/administration/questions/edit/:id', auth.isInRole("Admin"), controllers.admin.editQuestionGet);
     app.post('/administration/questions/edit/:id', auth.isInRole("Admin"), controllers.admin.editQuestionPost);
     app.post('/administration/questions/delete/:id', auth.isInRole("Admin"), controllers.admin.deleteQuestion);
@@ -42,10 +42,13 @@ module.exports = (app) => {
     app.post('/administration/missions/edit/:id', auth.isInRole("Admin"), controllers.admin.editMissionPost);
     app.get('/administration/missions/delete/:id', auth.isInRole("Admin"), controllers.admin.deleteMission);
 
+    app.get('/teachers/home', auth.isInRole('Teacher'), controllers.teachers.home);
     app.get('/teachers/questions', auth.isInRole('Teacher'), controllers.teachers.allQuestionsGet);
+    app.get('/teachers/questions/add', auth.isInRole('Teacher'), controllers.teachers.addTeachersQuestionGet);
+    app.post('/teachers/questions/add', auth.isInRole('Teacher'), controllers.teachers.addTeachersQuestionPost);
+    app.get('/teachers/questions/delete/:id', auth.isInRole('Teacher'), controllers.teachers.deleteQuestion);
     app.get('/teachers/questions/edit/:id', auth.isInRole('Teacher'), controllers.teachers.editQuestionGet);
     app.post('/teachers/questions/edit/:id', auth.isInRole('Teacher'), controllers.teachers.editQuestionPost);
-    app.get('/teachers/questions/delete/:id', auth.isInRole('Teacher'), controllers.teachers.deleteQuestion);
 
     app.get('/forum', auth.isAuthenticated, controllers.forum.mainGet);
     app.get('/forum/create', auth.isAuthenticated, controllers.forum.createGet);

@@ -1,0 +1,112 @@
+{{#if errorMessage}}
+    {{> error-message}}
+{{/if}}
+{{#if successMessage}}
+    {{> success-message}}
+{{/if}}
+<section class="container mx-auto mt-5 jumbotron section-shadow">
+    <a href="/teachers/questions?page=1" class="btn btn-outline-info p-3 col-sm-12 col-lg-1 mb-3">Назад</a>
+    <h1 class="h1 text-center border-bottom border-dark pb-3 mb-2 text-blue">Промени Въпрос</h1>
+    <form action="/teachers/questions/edit/{{question._id}}" method="post">
+        <div class="row offset-lg-1">
+            <div class="col-lg-10 mb-1">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Въведи въпрос:</p>
+                <div class="input-group mb-2 bg-info">
+                    <div class="input-group-prepend ">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <textarea name="description" class="form-control font-weight-bold text-primary" id="description-area" placeholder="Въведи въпрос...">{{question.description}}</textarea>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Отговор А:</p>
+                <div class="input-group mb-2 height-75">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <textarea name="answerA"class="form-control font-weight-bold text-primary " placeholder="Отговор А...">{{question.answerA}}</textarea>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Отговор Б:</p>
+                <div class="input-group mb-2 height-75">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <textarea name="answerB"class="form-control font-weight-bold text-primary" placeholder="Отговор Б...">{{question.answerB}}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row offset-lg-1">
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Отговор В:</p>
+                <div class="input-group mb-2 height-75">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <textarea name="answerC"class="form-control font-weight-bold text-primary " placeholder="Отговор В...">{{question.answerC}}</textarea>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Отговор Г:</p>
+                <div class="input-group mb-2 height-75">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <textarea name="answerD"class="form-control font-weight-bold text-primary" placeholder="Отговор Г...">{{question.answerD}}</textarea>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Верен отговор:</p>
+                <div class="input-group mb-2 height-75">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <textarea name="correctAnswer"class="form-control font-weight-bold text-primary" placeholder="Верен отговор...">{{question.correctAnswer}}</textarea>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Трудност:</p>
+                <select class="custom-select font-weight-bold" name="difficulty">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+        </div>
+        <div class="row offset-lg-1 mb-2">
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Клас:</p>
+                <select class="custom-select font-weight-bold" name="class" id="grade">
+                    <option value="5">5 клас</option>
+                    <option value="6">6 клас</option>
+                    <option value="7">7 клас</option>
+                    <option value="8" selected>8 клас</option>
+                    <option value="9">9 клас</option>
+                    <option value="10">10 клас</option>
+                    <option value="11">11 клас</option>
+                    <option value="12">12 клас</option>
+                </select>
+            </div>
+            <div class="col-lg-5">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Предмет:</p>
+                <select class="custom-select font-weight-bold" name="subject" id="subject">
+                    {{#each subjects}}
+                        <option value="{{key}}">{{value}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="d-block text-center">
+            <input type="hidden" name="author" value="{{currentUser.username}}">
+            <input type="submit" class="btn btn-outline-info p-3 m-3 mx-auto" value="SUBMIT">
+        </div>
+    </form>
+</section>

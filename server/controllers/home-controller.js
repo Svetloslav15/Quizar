@@ -22,7 +22,8 @@ module.exports = {
     rankingGet: async (req, res) => {
         let users = await Student.find()
             .sort({points: 'descending'});
-        let teachers = await Teacher.find();
+        let teachers = await Teacher.find()
+            .sort({points: 'descending'});
         for (let teacher of teachers) {
             users.push(teacher);
         }
@@ -48,6 +49,7 @@ module.exports = {
         result.forEach((x, i) => {
             x.position = i + 1 + (currentPage - 1) * 10;
         });
+        result = result.sort((a, b) => b.points - a.points);
         res.render('home/ranking', {users: result, previousPage, currentPage, nextPage});
     },
     rankingFilteredGet: async (req, res) => {
