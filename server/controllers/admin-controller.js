@@ -108,37 +108,6 @@ module.exports = {
         let questions = await Question.find({subject: subject, class: className});
         res.render('admins/list-questions', {questions})
     },
-    editQuestionGet: (req, res) => {
-        let description = req.body.description;
-        let difficulty = req.body.difficulty;
-        let answerA = req.body.answerA;
-        let answerB = req.body.answerB;
-        let answerC = req.body.answerC;
-        let answerD = req.body.answerD;
-        let correctAnswer = req.body.correctAnswer;
-        let subject = req.body.subject;
-        let classQ = req.body.class;
-        let author = req.body.author;
-        let questionid = req.body.id;
-        Question.findByIdAndUpdate(questionid, {
-            $set:{
-                description,
-                difficulty,
-                answerA,
-                answerB,
-                answerC,
-                answerD,
-                correctAnswer,
-                subject,
-                class: classQ,
-            }
-        }).then(() => {
-            res.redirect('/administration/questions');
-        }).catch(err => console.log(err));
-    },
-    editQuestionPost: (req, res) => {
-        //TODO
-    },
     deleteQuestion: (req, res) => {
         let questionId = req.params.id;
         Question.deleteOne({_id: questionId})
@@ -194,6 +163,41 @@ module.exports = {
             return;
         }
     },
+    editQuestionPost: (req, res) => {
+        let description = req.body.description;
+        let difficulty = req.body.difficulty;
+        let answerA = req.body.answerA;
+        let answerB = req.body.answerB;
+        let answerC = req.body.answerC;
+        let answerD = req.body.answerD;
+        let correctAnswer = req.body.correctAnswer;
+        let subject = req.body.subject;
+        let classQ = req.body.class;
+        let questionid = req.params.id;
+        Question.findByIdAndUpdate(questionid, {
+            $set:{
+                description,
+                difficulty,
+                answerA,
+                answerB,
+                answerC,
+                answerD,
+                correctAnswer,
+                subject,
+                class: classQ,
+            }
+        }).then((x) => {
+            res.redirect('/administration/questions/search');
+        }).catch(err => console.log(err));
+    },
+    editQuestionGet: (req, res) => {
+        let id = req.params.id;
+        Question.findById(id)
+            .then((question) => {
+                res.render('admins/editQuestionView.hbs', {question});
+            }).catch(err => console.log(err));
+    },
+
 
     listReports: (req, res) => {
         //TODO

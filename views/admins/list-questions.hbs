@@ -1,27 +1,32 @@
 <section class="section-area mx-auto mt-2 jumbotron w-99 row">
     <h2 class="text-center mx-auto">Въпроси</h2>
     <section class="row text-center ml-auto col-lg-12">
-        <table class="bg-skyblue text-white">
-            <tr class="">
-                <th class="border border-white bg-darkblue"></th>
-                <th class="border border-white bg-darkblue col-lg-3">Съдържание</th>
-                <th class="border border-white bg-darkblue p-1"></th>
-            </tr>
+        {{#if questions}}
             {{#each questions}}
+            <table class="bg-skyblue text-white">
+                <tr class="">
+                    <th class="border border-white bg-darkblue"></th>
+                    <th class="border border-white bg-darkblue col-lg-3">Съдържание</th>
+                    <th class="border border-white bg-darkblue p-1"></th>
+                </tr>
+
                 <div class="bg-blue text-white rounded row mb-2 w-100">
                     <div class="mx-auto row">
                         <tr class="">
                             <td class="border border-white h5 bg-darkblue p-3">{{rank}}.</td>
                             <td class="border border-white h5 bg-darkblue p-3">{{description}}</td>
                             <td class="border border-white h5 p-3">
-                                <a href="/teachers/questions/edit/{{_id}}" class="btn btn-warning m-1">Edit</a>
-                                <a href="/teachers/questions/delete/{{_id}}" class="btn btn-danger m-1">Delete</a>
+                                <a href="/administration/questions/edit/{{_id}}" class="btn btn-warning m-1">Edit</a>
+                                <a href="/administration/questions/delete/{{_id}}" class="btn btn-danger m-1">Delete</a>
                             </td>
                         </tr>
                     </div>
                 </div>
             {{/each}}
         </table>
+        {{else}}
+            <p class="text-center mx-auto mt-3 h3 ">Все още няма въпроси за тази категория</p>
+        {{/if}}
     </section>
     <ul class="pagination justify-content-center mx-auto mt-3">
         {{#if previousPage}}

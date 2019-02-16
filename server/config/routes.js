@@ -24,11 +24,11 @@ module.exports = (app) => {
     app.get('/administration/questions/search', auth.isInRole("Admin"), controllers.admin.questionsSearch);
     app.get('/administration/questions/add', auth.isInRole("Admin"), controllers.admin.addQuestionGet);
     app.post('/administration/questions/add', auth.isInRole("Admin"), controllers.admin.addQuestionPost);
+    app.get('/administration/questions/filtered', auth.isInRole("Admin"), controllers.admin.filteredQuestionsGet);
+    app.get('/administration/questions/delete/:id', auth.isInRole("Admin"), controllers.admin.deleteQuestion);
 
-    app.post('/administration/questions/:subject/:class', auth.isInRole("Admin"), controllers.admin.filteredQuestionsGet);
     app.get('/administration/questions/edit/:id', auth.isInRole("Admin"), controllers.admin.editQuestionGet);
     app.post('/administration/questions/edit/:id', auth.isInRole("Admin"), controllers.admin.editQuestionPost);
-    app.post('/administration/questions/delete/:id', auth.isInRole("Admin"), controllers.admin.deleteQuestion);
     app.get('/administration/questions/getById', auth.isInRole("Admin"), controllers.admin.getQuestionById);
     app.get('/administration/reports', auth.isInRole("Admin"), controllers.admin.listReports);
     app.get('/administration/reports/archive', auth.isInRole("Admin"), controllers.admin.listArchiveReports);
