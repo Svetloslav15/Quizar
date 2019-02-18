@@ -143,8 +143,11 @@ module.exports = {
             likes: 0,
             dislikes: 0
         };
+        let answers = [answerA, answerB, answerC, answerD];
+        answers = Array.from(new Set(answers))
         if (description.trim() != "" && difficulty && answerA.trim() != "" && answerB.trim() != "" &&
-            answerC.trim() != "" && answerD.trim() != "" && correctAnswer.trim() != "" && subject && classQ && author){
+            answerC.trim() != "" && answerD.trim() != "" && correctAnswer.trim() != "" &&
+            subject && classQ && author && answers.length == 4 && answers.includes(correctAnswer)){
             Question.create(obj).then(async () => {
                 let user = await Student.findById(req.user.id);
                 if (!user){
@@ -152,13 +155,13 @@ module.exports = {
                 }
                 user.points += 3;
                 user.save();
-                res.locals.successMessage = "You added new question successfully!";
+                res.locals.successMessage = "Успешно добави въпрос!";
                 res.render('admins/addQuestionView');
                 return;
             }).catch(err => console.log(err));
         }
         else{
-            res.locals.errorMessage = "Invalid models";
+            res.locals.errorMessage = "Невалидни данни";
             res.render('admins/addQuestionView', {obj});
             return;
         }

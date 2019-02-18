@@ -5,6 +5,7 @@ const Teacher = require('../models/Teacher');
 const Question = require('../models/Question');
 const ForumQuestion = require('../models/Forum-Question');
 const ForumComment = require('../models/Forum-Comment');
+const Report = require('../models/Report');
 
 mongoose.Promise = global.Promise;
 

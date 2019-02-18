@@ -48,8 +48,11 @@ module.exports = {
             likes: 0,
             dislikes: 0
         };
+        let answers = [answerA, answerB, answerC, answerD];
+        answers = Array.from(new Set(answers))
         if (description.trim() != "" && difficulty && answerA.trim() != "" && answerB.trim() != "" &&
-            answerC.trim() != "" && answerD.trim() != "" && correctAnswer.trim() != "" && subject && classQ && author){
+            answerC.trim() != "" && answerD.trim() != "" && correctAnswer.trim() != "" &&
+            answers.length == 4 && answers.includes(correctAnswer) && subject && classQ && author){
             Question.create(obj).then(async () => {
                 let teacher = await Teacher.findById(req.user.id);
                 teacher.points += 3;
@@ -59,7 +62,7 @@ module.exports = {
             }).catch(err => console.log(err));
         }
         else{
-            res.locals.errorMessage = "Invalid models";
+            res.locals.errorMessage = "Невалидни данни";
             res.render('teachersPanel/addQuestionView', {obj});
             return;
         }

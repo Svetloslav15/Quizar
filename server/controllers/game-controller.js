@@ -1,6 +1,7 @@
 const Question = require('mongoose').model('Question');
 const Teacher = require('mongoose').model('Teacher');
 const Student = require('mongoose').model('Student');
+const Report = require('mongoose').model('Report');
 
 module.exports = {
     start: (req, res) => {
@@ -15,17 +16,17 @@ module.exports = {
         req.session.questions = [];
         res.redirect('/game/play');
     },
-    play: async (req, res) =>{
+    play: async (req, res) => {
         let category = req.session.subject;
         let questionsUsed = req.session.questions;
         let question = '';
         let questions = await Question.find({});
-        if (category !== 'all'){
+        if (category !== 'all') {
             questions = questions.filter(x => x.subject === category);
         }
         questions = questions.filter(x => questionsUsed.includes(x._id.toString()) === false);
 
-        if (questions.length == 0){
+        if (questions.length == 0) {
             res.redirect('/game/answeredAllQuestions');
             return;
         }
@@ -38,14 +39,14 @@ module.exports = {
         let questionId = req.params.questionId;
         let userAnswer = req.params.answer;
         let question = await Question.findById(questionId);
-        if (question.correctAnswer == userAnswer){
+        if (question.correctAnswer == userAnswer) {
             addUserPoints(req);
             let questions = req.session.questions;
             questions.push(questionId);
             req.session.questions = questions;
             res.redirect('/game/play')
         }
-        else{
+        else {
             res.redirect('/game/over');
         }
     },
@@ -54,13 +55,26 @@ module.exports = {
     },
     answeredAllQuestions: (req, res) => {
         res.render('game/allQuestionsAnswered.hbs');
+    },
+    reportGet: (req, res) => {
+        let id = req.params.id.toString();
+        res.render('game/addReport', {id});
+    },
+    reportPost: (req, res) => {
+        let questionId = req.params.id;
+        let description = req.body.description;
+        let author = req.body.author;
+        Report.create({description, questionId, author})
+            .then((x) => {
+                res.redirect('/game/start');
+            }).catch(console.error);
     }
 };
 
 async function addUserPoints(req) {
     let userId = req.user._id;
     let user = await Student.findById(userId);
-    if (!user){
+    if (!user) {
         user = await Teacher.findById(userId);
     }
     user.points += 5;
