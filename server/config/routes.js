@@ -9,6 +9,14 @@ module.exports = (app) => {
     app.get('/rankings', auth.isAuthenticated, controllers.home.rankingGet);
     app.get('/rankings/:category', auth.isAuthenticated, controllers.home.rankingFilteredGet);
 
+    app.get('/game/start', auth.isAuthenticated, controllers.game.start);
+    app.get('/game/settings', auth.isAuthenticated, controllers.game.settings);
+    app.post('/game/settings', auth.isAuthenticated, controllers.game.setCategory);
+    app.get('/game/play', auth.isAuthenticated, controllers.game.play);
+    app.get('/game/answer/:questionId/:answer', auth.isAuthenticated, controllers.game.answerQuestion);
+    app.get('/game/over', auth.isAuthenticated, controllers.game.gameOver);
+    app.get('/game/answeredAllQuestions', auth.isAuthenticated, controllers.game.answeredAllQuestions);
+
     app.get('/users/register', controllers.users.registerGet);
     app.post('/users/register', controllers.users.registerPost);
     app.get('/users/login', controllers.users.loginGet);

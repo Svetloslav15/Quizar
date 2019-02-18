@@ -1,0 +1,51 @@
+<div class="section-area shadow-div container mx-auto mt-5 jumbotron ">
+    <p id="timer" class="text-white h2 mb-1 ml-auto bg-danger p-2 border-rounded d-inline-block">10</p>
+    <div name="description" class="shadow p-3 bg-skyblue text-white m-1">
+        {{description}}
+    </div>
+    <div class="row text-center mx-auto mt-4">
+        <div class="col-lg-5 bg-skyblue text-white mx-5 p-3 m-1">
+            <a href="/game/answer/{{_id}}/{{answerA}}" class="link-white">
+                A: {{answerA}}
+            </a>
+        </div>
+        <div class="col-lg-5 bg-skyblue text-white p-3 m-1">
+            <a href="/game/answer/{{_id}}/{{answerB}}" class="link-white">
+                Б: {{answerB}}
+            </a>
+        </div>
+    </div>
+    <div class="row text-center mx-auto mt-4">
+        <div class="col-lg-5 bg-skyblue text-white mx-5 p-3 m-1">
+            <a href="/game/answer/{{_id}}/{{answerC}}" class="link-white">
+                В: {{answerC}}
+            </a>
+        </div>
+        <div class="col-lg-5 bg-skyblue text-white p-3 m-1">
+            <a href="/game/answer/{{_id}}/{{answerD}}" class="link-white">
+                Г: {{answerD}}
+            </a>
+        </div>
+    </div>
+    <div class="text-center rounded-circle">
+        <div class="col-lg-2 btn btn-danger p-2 mt-4">
+            <a href="#" class="link-white">
+                Репорт
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(function () {
+        window.location = "/game/over";
+    }, 10000)
+</script>
+
+<script>
+    setInterval(function() {
+        let el = document.getElementById('timer');
+        let sec = Number(el.textContent);
+        el.textContent = sec - 1;
+    }, 1000);
+</script>
+<script src="/js/particles.js"></script>

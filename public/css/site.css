@@ -116,6 +116,16 @@ a{
     right:5px;
     z-index: 1000;
 }
+.btn-game{
+    width: 17em;
+    font-size: 20px;
+}
+.game-start{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+}
 .menu-profile-link:hover{
     font-weight: bold;
 }
@@ -135,9 +145,16 @@ a{
 .w-85{
     width: 85%;
 }
+.bg-blue-blue{
+    background: #009AF7;
+}
+shadow{
+    box-shadow: 2px 0px 34px -1px rgba(0,0,0,0.75);
+}
 #rules-div{
     border: 6px solid #FF8935;
     padding: 3em;
+    box-shadow: 2px 0px 34px -1px rgba(0,0,0,0.75);
 }
 .dark-green{
     background-color: #16DDBA;
@@ -298,6 +315,9 @@ table{
 }
 ::-webkit-scrollbar-thumb{
     background: deepskyblue;
+}
+.bg-bg-blue{
+    background: #3D7FDD;
 }
 .forum-a{
     text-decoration: none;
