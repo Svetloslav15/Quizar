@@ -1,0 +1,31 @@
+<section class="section-area mx-auto mt-2 jumbotron w-99 row">
+    <h2 class="text-center mx-auto">Мисии</h2>
+    <section class="row text-center ml-auto col-lg-12">
+        {{#if missions}}
+            <table class="bg-skyblue text-white">
+                <tr class="">
+                    <th class="border border-white bg-darkblue"></th>
+                    <th class="border border-white bg-darkblue col-lg-3">Съдържание</th>
+                    <th class="border border-white bg-darkblue p-1"></th>
+                </tr>
+                {{#each missions}}
+                    <div class="bg-blue text-white rounded row mb-2 w-100">
+                        <div class="mx-auto row">
+                            <tr class="">
+                                <td class="border border-white h5 bg-darkblue p-3">{{rank}}.</td>
+                                <td class="border border-white h5 bg-darkblue p-3">{{description}}</td>
+                                <td class="border border-white h5 p-3">
+                                    <a href="/administration/missions/edit/{{_id}}" class="btn btn-warning m-1">Edit</a>
+                                    <a href="/administration/missions/delete/{{_id}}"
+                                       class="btn btn-danger m-1">Delete</a>
+                                </td>
+                            </tr>
+                        </div>
+                    </div>
+                {{/each}}
+            </table>
+            {{else}}
+        <h2 class="text-center mx-auto my-2 h3">Все още няма мисии</h2>
+        {{/if}}
+    </section>
+</section>

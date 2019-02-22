@@ -6,7 +6,7 @@ const Question = require('../models/Question');
 const ForumQuestion = require('../models/Forum-Question');
 const ForumComment = require('../models/Forum-Comment');
 const Report = require('../models/Report');
-const Mission = require('../models/Mission');
+const Mission = require('../models/DailyMission');
 
 mongoose.Promise = global.Promise;
 

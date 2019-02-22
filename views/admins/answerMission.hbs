@@ -1,0 +1,32 @@
+{{#if errorMessage}}
+    {{> error-message}}
+{{/if}}
+{{#if successMessage}}
+    {{> success-message}}
+{{/if}}
+<section class="container mx-auto mt-5 jumbotron section-shadow">
+    <form action="/administration/missions/answer/{{_id}}" method="post">
+        <div class="row offset-lg-1">
+            <div class="col-lg-10 mb-1">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Съдържание:</p>
+                <div class="input-group mb-2 bg-info">
+                    <p name="description" class="form-control font-weight-bold text-primary" >{{description}}</p>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <p class="d-inline-block mb-1 text-primary font-weight-bold">Въведи отговор:</p>
+                <div class="input-group mb-2 height-75">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-blue"><i class="fas fa-user text-white"></i></div>
+                    </div>
+                    <textarea name="answer"class="form-control font-weight-bold text-primary " placeholder="Отговор..."></textarea>
+                </div>
+            </div>
+
+        </div>
+        <div class="d-block text-center">
+            <input type="hidden" name="author" value="{{currentUser.username}}">
+            <input type="submit" class="btn btn-outline-info p-3 m-3 mx-auto" value="SUBMIT">
+        </div>
+    </form>
+</section>

@@ -5,6 +5,7 @@ const teachers = require('./teachers-controller');
 const forum = require('./forum-controller');
 const game = require('./game-controller');
 const mission = require('./mission-controller');
+
 module.exports = {
     home: home,
     users: users,

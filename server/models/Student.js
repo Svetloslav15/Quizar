@@ -10,6 +10,7 @@ let studentSchema = mongoose.Schema({
     roles: ["Student"],
     salt: {type: String},
     hashedPassword: {type: String},
+    missions: [{type: String}]
 });
 
 let Student = mongoose.model("Student", studentSchema);

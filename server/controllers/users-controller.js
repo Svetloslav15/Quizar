@@ -1,5 +1,4 @@
 const encryption = require('../utilities/encryption');
-const User = require('mongoose').model('User');
 const Teacher = require('mongoose').model('Teacher');
 const Student = require('mongoose').model('Student');
 

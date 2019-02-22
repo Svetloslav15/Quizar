@@ -45,12 +45,17 @@ module.exports = (app) => {
     app.get('/administration/reports/:id', auth.isInRole("Admin"), controllers.admin.getReport);
     app.post('/administration/reports/archive/:id', auth.isInRole("Admin"), controllers.admin.reportArchive);
     app.post('/administration/reports/active/:id', auth.isInRole("Admin"), controllers.admin.reportActive);
-    //app.get('/administration/missions', auth.isInRole("Admin"), controllers.admin.listMissions);
-    //app.get('/administration/missions/add', auth.isInRole("Admin"), controllers.admin.addMissionGet);
-    //app.post('/administration/missions/add', auth.isInRole("Admin"), controllers.admin.addMissionPost);
-    //app.get('/administration/missions/edit/:id', auth.isInRole("Admin"), controllers.admin.editMissionGet);
-    //app.post('/administration/missions/edit/:id', auth.isInRole("Admin"), controllers.admin.editMissionPost);
-    //app.get('/administration/missions/delete/:id', auth.isInRole("Admin"), controllers.admin.deleteMission);
+
+    app.get('/administration/missions', auth.isInRole("Admin"), controllers.mission.getAll);
+    app.get('/missions/today', auth.isAuthenticated, controllers.mission.getTodaysMissions);
+    app.get('/administration/missions/main', auth.isInRole("Admin"), controllers.mission.missionsMainPage);
+    app.get('/administration/missions/add', auth.isInRole("Admin"), controllers.mission.addMissionGet);
+    app.post('/administration/missions/add', auth.isInRole("Admin"), controllers.mission.addMissionPost);
+    app.get('/administration/missions/edit/:id', auth.isInRole("Admin"), controllers.mission.editMissionGet);
+    app.post('/administration/missions/edit/:id', auth.isInRole("Admin"), controllers.mission.editMissionPost);
+    app.get('/administration/missions/delete/:id', auth.isInRole("Admin"), controllers.mission.deleteMission);
+    app.get('/administration/missions/answer/:id', auth.isAuthenticated, controllers.mission.answerMissionGet);
+    app.post('/administration/missions/answer/:id', auth.isAuthenticated, controllers.mission.answerMissionPost);
 
     app.get('/teachers/home', auth.isInRole('Teacher'), controllers.teachers.home);
     app.get('/teachers/questions', auth.isInRole('Teacher'), controllers.teachers.allQuestionsGet);
