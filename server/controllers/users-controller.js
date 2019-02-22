@@ -16,7 +16,7 @@ module.exports = {
         let lastName = reqUser.lastName.trim();
         let email = reqUser.email.trim();
         let roles = reqUser.role;
-        let points = 0;
+        let points = 300;
         let salt = encryption.generateSalt();
         let password = reqUser.password;
         let repeatedPassword = reqUser.repeatedPassword;
@@ -36,7 +36,6 @@ module.exports = {
         await Teacher.find({}).where('username').equals(reqUser.username)
             .then(teacher => {
                 if (teacher.length > 0){
-                    console.log("sdd");
                     usernameExists = true;
                 }
             });

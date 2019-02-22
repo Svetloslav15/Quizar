@@ -371,3 +371,7 @@ table{
 .comment-likes-d, .comment-likes-d:hover{
     color: white;
 }
+.img-a{
+    width: 100px; !important;
+    height: 150px; !important;
+}

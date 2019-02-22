@@ -50,7 +50,17 @@ module.exports = {
             res.redirect('/game/over');
         }
     },
-    gameOver: (req, res) => {
+    gameOver: async (req, res) => {
+        let id = req.user._id;
+        let user = await Student.findById(id);
+        if (!user){
+            user = await Teacher.findById(id);
+        }
+        user.points -= 5;
+        if (user.points < 0){
+            user.points = 0;
+        }
+        user.save();
         res.render('game/gameOver');
     },
     answeredAllQuestions: (req, res) => {
@@ -77,6 +87,6 @@ async function addUserPoints(req) {
     if (!user) {
         user = await Teacher.findById(userId);
     }
-    user.points += 5;
+    user.points += 3;
     user.save();
 }

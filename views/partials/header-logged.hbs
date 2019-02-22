@@ -10,6 +10,9 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item custom-nav-link">
+                    <a class="text-white text-center nav-link font-weight-bold custom-nav-a" href="/">Начало</a>
+                </li>
+                <li class="nav-item custom-nav-link">
                     <a class="text-white text-center nav-link font-weight-bold custom-nav-a" href="/game/start">Игра</a>
                 </li>
                 <li class="nav-item custom-nav-link text-center">
@@ -49,10 +52,7 @@
                 <i class="fas fa-user-secret mr-3 icon mt-1 text-white"></i>
                 <a href="#" class="nav-link text-white menu-profile-link">Дневни мисии</a>
             </li>
-            <li class="nav-item row mx-2 mb-3">
-                <i class="fas fa-th-large mt-2 mr-3 text-white text-white"></i>
-                <a href="#" class="nav-link mr-4 text-white menu-profile-link">Блог статии</a>
-            </li>
+
             {{#if currentUser.isAdmin}}
                 <li class="nav-item row mx-2 mb-3">
                     <i class="fas fa-unlock mr-3 icon mt-1 text-white"></i>
@@ -67,7 +67,7 @@
             {{/if}}
             <li class="nav-item row mx-2 mb-3">
                 <i class="fas fa-sign-out-alt mr-3 icon mt-1 text-white"></i>
-                <a href="/users/logout" class="nav-link text-white menu-profile-link">Излезни</a>
+                <a href="/users/logout" class="nav-link text-white menu-profile-link">Изход</a>
             </li>
             <li class="nav-item m-auto text-white">
                 <i class="fas fa-arrow-circle-up menu-profile-link" id="menu-arrow-collapse"></i>

@@ -45,12 +45,12 @@ module.exports = (app) => {
     app.get('/administration/reports/:id', auth.isInRole("Admin"), controllers.admin.getReport);
     app.post('/administration/reports/archive/:id', auth.isInRole("Admin"), controllers.admin.reportArchive);
     app.post('/administration/reports/active/:id', auth.isInRole("Admin"), controllers.admin.reportActive);
-    app.get('/administration/missions', auth.isInRole("Admin"), controllers.admin.listMissions);
-    app.get('/administration/missions/add', auth.isInRole("Admin"), controllers.admin.addMissionGet);
-    app.post('/administration/missions/add', auth.isInRole("Admin"), controllers.admin.addMissionPost);
-    app.get('/administration/missions/edit/:id', auth.isInRole("Admin"), controllers.admin.editMissionGet);
-    app.post('/administration/missions/edit/:id', auth.isInRole("Admin"), controllers.admin.editMissionPost);
-    app.get('/administration/missions/delete/:id', auth.isInRole("Admin"), controllers.admin.deleteMission);
+    //app.get('/administration/missions', auth.isInRole("Admin"), controllers.admin.listMissions);
+    //app.get('/administration/missions/add', auth.isInRole("Admin"), controllers.admin.addMissionGet);
+    //app.post('/administration/missions/add', auth.isInRole("Admin"), controllers.admin.addMissionPost);
+    //app.get('/administration/missions/edit/:id', auth.isInRole("Admin"), controllers.admin.editMissionGet);
+    //app.post('/administration/missions/edit/:id', auth.isInRole("Admin"), controllers.admin.editMissionPost);
+    //app.get('/administration/missions/delete/:id', auth.isInRole("Admin"), controllers.admin.deleteMission);
 
     app.get('/teachers/home', auth.isInRole('Teacher'), controllers.teachers.home);
     app.get('/teachers/questions', auth.isInRole('Teacher'), controllers.teachers.allQuestionsGet);

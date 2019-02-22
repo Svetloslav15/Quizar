@@ -97,7 +97,7 @@ module.exports = {
     },
     getQuestionById: async function (req, res) {
         let id = req.body.id;
-
+        //TODO
     },
     questionsSearch: (req, res) => {
         res.render('admins/searchquestions');
@@ -201,7 +201,6 @@ module.exports = {
             }).catch(err => console.log(err));
     },
 
-
     listReports: (req, res) => {
         //TODO
     },
@@ -217,22 +216,5 @@ module.exports = {
     reportActive: (req, res) => {
         //TODO
     },
-    listMissions: (req, res) => {
-        //TODO
-    },
-    addMissionGet: (req, res) => {
-        //TODO
-    },
-    addMissionPost: (req, res) => {
-        //TODO
-    },
-    editMissionGet: (req, res) => {
-        //TODO
-    },
-    editMissionPost: (req, res) => {
-        //TODO
-    },
-    deleteMission: (req, res) => {
-        //TODO
-    },
+
 };
