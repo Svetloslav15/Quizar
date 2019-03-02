@@ -218,7 +218,9 @@ module.exports = {
 
         let question = await ForumQuestion.findById(questionid);
         let likes = question.likes.filter(x => x != userId);
+        question.dislikes = question.dislikes.filter(x => x != userId);
         likes.push(userId);
+        question.save();
         await ForumQuestion.findByIdAndUpdate(questionid, {
             $set: {
                 likes: likes
@@ -233,6 +235,8 @@ module.exports = {
         let question = await ForumQuestion.findById(questionid);
         let dislikes = question.dislikes.filter(x => x != userId);
         dislikes.push(userId);
+        question.likes = question.likes.filter(x => x != userId);
+        question.save();
         await ForumQuestion.findByIdAndUpdate(questionid, {
             $set: {
                 dislikes: dislikes
@@ -247,6 +251,8 @@ module.exports = {
 
         let question = await ForumComment.findById(commentId);
         let likes = question.likes.filter(x => x != userId);
+        question.dislikes = question.dislikes.filter(x => x != userId);
+        question.save();
         likes.push(userId);
         await ForumComment.findByIdAndUpdate(commentId, {
             $set: {
@@ -263,6 +269,8 @@ module.exports = {
         let question = await ForumComment.findById(commentId);
         let dislikes = question.dislikes.filter(x => x != userId);
         dislikes.push(userId);
+        question.likes = question.likes.filter(x => x != userId);
+        question.save();
         await ForumComment.findByIdAndUpdate(commentId, {
             $set: {
                 dislikes: dislikes
