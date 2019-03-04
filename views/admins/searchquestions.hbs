@@ -1,7 +1,7 @@
 <section class="container mx-auto mt-5 jumbotron section-shadow">
     <h1 class="h1 text-center border-bottom border-dark pb-3 mb-2 text-blue">Филтрирай въпроси</h1>
     <section class="row text-center mx-auto">
-        <form action="/administration/questions/filtered" method="get" class="col-lg-6 border-right-blue mt-3">
+        <form action="/administration/questions/filtered" method="get" class="col-lg-12 border-right-blue mt-3">
             <section>
                 <div class="col-lg-12 mb-2">
                     <p class="d-inline-block mb-1 text-primary font-weight-bold">Предмет:</p>
@@ -42,13 +42,6 @@
             </section>
             <div class="col-lg-12">
                 <input type="submit" class="btn btn-outline-info p-3 m-3 mx-auto" value="Филтрирай">
-            </div>
-        </form>
-        <form action="/administration/questions/getById" method="get" class="mx-auto mt-3 col-lg-6">
-            <div class="col-sm-12">
-                <p class="d-inline-block mb-1 text-primary font-weight-bold">Търси по id:</p>
-                <input type="text" name="id"class="form-control font-weight-bold text-primary col-lg-12">
-                <input type="submit" class="btn btn-outline-info p-3 m-3 mx-auto" value="Търси">
             </div>
         </form>
     </section>
