@@ -41,10 +41,7 @@ module.exports = (app) => {
     app.post('/administration/questions/edit/:id', auth.isInRole("Admin"), controllers.admin.editQuestionPost);
     app.get('/administration/questions/getById', auth.isInRole("Admin"), controllers.admin.getQuestionById);
     app.get('/administration/reports', auth.isInRole("Admin"), controllers.admin.listReports);
-    app.get('/administration/reports/archive', auth.isInRole("Admin"), controllers.admin.listArchiveReports);
-    app.get('/administration/reports/:id', auth.isInRole("Admin"), controllers.admin.getReport);
-    app.post('/administration/reports/archive/:id', auth.isInRole("Admin"), controllers.admin.reportArchive);
-    app.post('/administration/reports/active/:id', auth.isInRole("Admin"), controllers.admin.reportActive);
+    app.get('/administration/reports/delete/:id', auth.isInRole("Admin"), controllers.admin.deleteReport);
 
     app.get('/administration/missions', auth.isInRole("Admin"), controllers.mission.getAll);
     app.get('/missions/today', auth.isAuthenticated, controllers.mission.getTodaysMissions);

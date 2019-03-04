@@ -1,0 +1,30 @@
+<section class="section-area mx-auto mt-2 jumbotron w-99 row">
+    <h2 class="text-center mx-auto">Репорти</h2>
+    <section class="row text-center ml-auto col-lg-12">
+        {{#if reports}}
+            <table class="bg-skyblue text-white">
+                <tr class="">
+                    <th class="border border-white bg-darkblue"></th>
+                    <th class="border border-white bg-darkblue col-lg-3">Проблем</th>
+                    <th class="border border-white bg-darkblue p-1">Към въпроса</th>
+                </tr>
+                {{#each reports}}
+                    <div class="bg-blue text-white rounded row mb-2 w-100">
+                        <div class="mx-auto row">
+                            <tr class="">
+                                <td class="border border-white h5 bg-darkblue p-3">{{rank}}.</td>
+                                <td class="border border-white h5 bg-darkblue p-3">{{description}}</td>
+                                <td class="border border-white h5 p-3">
+                                    <a href="/administration/questions/edit/{{questionId}}" class="btn btn-warning m-1">Към въпроса</a>
+                                    <a href="/administration/reports/delete/{{_id}}" class="btn btn-danger m-1">Изтрии</a>
+                                </td>
+                            </tr>
+                        </div>
+                    </div>
+                {{/each}}
+            </table>
+        {{else}}
+            <h2 class="text-center mx-auto my-2 h3">Все още няма репорти</h2>
+        {{/if}}
+    </section>
+</section>

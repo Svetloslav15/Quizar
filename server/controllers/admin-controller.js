@@ -1,6 +1,7 @@
 const Student = require('mongoose').model('Student');
 const Teacher = require('mongoose').model('Teacher');
 const Question = require('mongoose').model('Question');
+const Report = require('mongoose').model('Report');
 
 module.exports = {
     adminHome: (req, res) => {
@@ -68,7 +69,7 @@ module.exports = {
                 $set: {roles: roles, isAdmin: true}
             });
         }
-        res.redirect('/administration/users');
+        res.redirect('/administration/users?page=1');
     },
     removeAdmin: async function (req, res) {
         let userId = req.params.id;
@@ -90,7 +91,7 @@ module.exports = {
                 $set: {roles: roles, isAdmin: false}
             });
         }
-        res.redirect('/administration/users');
+        res.redirect('/administration/users?page=1');
     },
     questionsMainGet: (req, res) => {
         res.render('admins/mainquestions');
@@ -200,21 +201,16 @@ module.exports = {
                 res.render('admins/editQuestionView.hbs', {question});
             }).catch(err => console.log(err));
     },
-
-    listReports: (req, res) => {
-        //TODO
+    listReports: async (req, res) => {
+        let reports = await Report.find({});
+        reports.forEach((x, i) => {
+           x.rank = i + 1;
+        });
+        res.render('admins/listReports', {reports});
     },
-    listArchiveReports: (req, res) => {
-        //TODO
-    },
-    getReport: (req, res) => {
-        //TODO
-    },
-    reportArchive: (req, res) => {
-        //TODO
-    },
-    reportActive: (req, res) => {
-        //TODO
-    },
-
+    deleteReport: async (req, res) => {
+        let id = req.params.id;
+        let report = await Report.findByIdAndRemove(id);
+        res.redirect('/administration/reports');
+    }
 };
