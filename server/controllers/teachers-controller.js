@@ -7,8 +7,9 @@ module.exports = {
     home: (req, res) => {
         res.render('teachersPanel/main');
     },
-    addTeachersQuestionGet: (req, res) => {
-        let subjectsUser = req.user.subjects;
+    addTeachersQuestionGet: async (req, res) => {
+        let user = await Teacher.findById(req.user._id);
+        let subjectsUser = user["subjects"];
         subjectsUser.forEach(x => {
             x.key = x;
             x.value = subjectsJSON[x];
