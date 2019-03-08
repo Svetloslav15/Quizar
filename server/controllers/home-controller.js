@@ -27,6 +27,8 @@ module.exports = {
         for (let teacher of teachers) {
             users.push(teacher);
         }
+        users = users.sort((a, b) => b.points - a.points);
+
         let currentPage = Number(req.query.page);
         let numberOfPages = Math.floor(users.length / 10);
         if (users.length % 10 != 0) {
@@ -46,10 +48,10 @@ module.exports = {
         for (let index = startIndex; index <= lastIndex; index++) {
             result.push(users[index]);
         }
+
         result.forEach((x, i) => {
             x.position = i + 1 + (currentPage - 1) * 10;
         });
-        result = result.sort((a, b) => b.points - a.points);
         res.render('home/ranking', {users: result, previousPage, currentPage, nextPage});
     },
     rankingFilteredGet: async (req, res) => {
