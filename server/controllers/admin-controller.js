@@ -96,10 +96,6 @@ module.exports = {
     questionsMainGet: (req, res) => {
         res.render('admins/mainquestions');
     },
-    getQuestionById: async function (req, res) {
-        let id = req.body.id;
-        //TODO
-    },
     questionsSearch: (req, res) => {
         res.render('admins/searchquestions');
     },
@@ -148,10 +144,10 @@ module.exports = {
         answers = Array.from(new Set(answers))
         if (description.trim() != "" && difficulty && answerA.trim() != "" && answerB.trim() != "" &&
             answerC.trim() != "" && answerD.trim() != "" && correctAnswer.trim() != "" &&
-            subject && classQ && author && answers.length == 4 && answers.includes(correctAnswer)){
+            subject && classQ && author && answers.length == 4 && answers.includes(correctAnswer)) {
             Question.create(obj).then(async () => {
                 let user = await Student.findById(req.user.id);
-                if (!user){
+                if (!user) {
                     user = await Teacher.findById(req.user.id);
                 }
                 user.points += 3;
@@ -161,13 +157,13 @@ module.exports = {
                 return;
             }).catch(err => console.log(err));
         }
-        else{
+        else {
             res.locals.errorMessage = "Невалидни данни";
             res.render('admins/addQuestionView', {obj});
             return;
         }
     },
-    editQuestionPost: (req, res) => {
+    editQuestionPost: async (req, res) => {
         let description = req.body.description;
         let difficulty = req.body.difficulty;
         let answerA = req.body.answerA;
@@ -178,21 +174,32 @@ module.exports = {
         let subject = req.body.subject;
         let classQ = req.body.class;
         let questionid = req.params.id;
-        Question.findByIdAndUpdate(questionid, {
-            $set:{
-                description,
-                difficulty,
-                answerA,
-                answerB,
-                answerC,
-                answerD,
-                correctAnswer,
-                subject,
-                class: classQ,
-            }
-        }).then((x) => {
-            res.redirect('/administration/questions/search');
-        }).catch(err => console.log(err));
+        let question = await Question.findById(questionid);
+
+        let answers = [answerA, answerB, answerC, answerD];
+        answers = Array.from(new Set(answers))
+        if (description.trim() != "" && difficulty && answerA.trim() != "" && answerB.trim() != "" &&
+            answerC.trim() != "" && answerD.trim() != "" && correctAnswer.trim() != "" &&
+            subject && classQ && answers.length == 4 && answers.includes(correctAnswer)) {
+            Question.findByIdAndUpdate(questionid, {
+                $set: {
+                    description,
+                    difficulty,
+                    answerA,
+                    answerB,
+                    answerC,
+                    answerD,
+                    correctAnswer,
+                    subject,
+                    class: classQ,
+                }
+            }).then((x) => {
+                res.redirect('/administration/questions/search');
+            }).catch(err => console.log(err));
+        }
+        else {
+            res.render('admins/editQuestionView.hbs', {question});
+        }
     },
     editQuestionGet: (req, res) => {
         let id = req.params.id;
@@ -204,7 +211,7 @@ module.exports = {
     listReports: async (req, res) => {
         let reports = await Report.find({});
         reports.forEach((x, i) => {
-           x.rank = i + 1;
+            x.rank = i + 1;
         });
         res.render('admins/listReports', {reports});
     },
@@ -212,5 +219,16 @@ module.exports = {
         let id = req.params.id;
         let report = await Report.findByIdAndRemove(id);
         res.redirect('/administration/reports');
+    },
+    removeUser: async (req, res) => {
+        let id = req.params.id;
+        console.log(id);
+        let user = await Student.findByIdAndRemove(id);
+        if (!user) {
+            user = await Teacher.findByIdAndRemove(id);
+        }
+        user.remove();
+        user.save();
+        res.redirect("/administration/users?page=1");
     }
 };

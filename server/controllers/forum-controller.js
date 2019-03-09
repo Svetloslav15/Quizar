@@ -228,6 +228,38 @@ module.exports = {
         });
         res.redirect(`/forum/questions/${questionid}`);
     },
+    likeQuestionPostFromMain: async (req, res) => {
+        let questionid = req.params.id;
+        let userId = req.user._id;
+
+        let question = await ForumQuestion.findById(questionid);
+        let likes = question.likes.filter(x => x != userId);
+        question.dislikes = question.dislikes.filter(x => x != userId);
+        likes.push(userId);
+        question.save();
+        await ForumQuestion.findByIdAndUpdate(questionid, {
+            $set: {
+                likes: likes
+            }
+        });
+        res.redirect(`/forum?page=1`);
+    },
+    dislikeQuestionPostFromMain: async (req, res) => {
+        let questionid = req.params.id;
+        let userId = req.user._id;
+
+        let question = await ForumQuestion.findById(questionid);
+        let dislikes = question.dislikes.filter(x => x != userId);
+        dislikes.push(userId);
+        question.likes = question.likes.filter(x => x != userId);
+        question.save();
+        await ForumQuestion.findByIdAndUpdate(questionid, {
+            $set: {
+                dislikes: dislikes
+            }
+        });
+        res.redirect(`/forum?page=1`);
+    },
     dislikeQuestionPost: async (req, res) => {
         let questionid = req.params.id;
         let userId = req.user._id;

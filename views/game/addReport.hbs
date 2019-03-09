@@ -1,5 +1,5 @@
 <section class="container mx-auto mt-5 jumbotron section-shadow">
-    <h1 class="h1 text-center border-bottom border-dark pb-3 mb-2 text-blue">Добави Репорт</h1>
+    <h1 class="h1 text-center border-bottom border-dark pb-3 mb-2 text-blue">Добави доклад</h1>
     <form action="/game/report/{{id}}" method="post">
         <div class="offset-lg-1">
             <div class="col-lg-10 mb-1">
@@ -13,7 +13,7 @@
             </div>
             <div class="d-block text-center">
                 <input type="hidden" name="author" value="{{currentUser.username}}">
-                <input type="submit" class="btn btn-outline-info p-3 m-3 mx-auto" value="SUBMIT">
+                <input type="submit" class="btn btn-outline-info p-3 m-3 mx-auto" value="Добави">
             </div>
         </div>
     </form>

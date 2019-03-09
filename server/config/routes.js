@@ -15,6 +15,7 @@ module.exports = (app) => {
     app.get('/game/play', auth.isAuthenticated, controllers.game.play);
     app.get('/game/answer/:questionId/:answer', auth.isAuthenticated, controllers.game.answerQuestion);
     app.get('/game/over', auth.isAuthenticated, controllers.game.gameOver);
+    app.get('/game/over/over', auth.isAuthenticated, controllers.game.gameOverOver);
     app.get('/game/answeredAllQuestions', auth.isAuthenticated, controllers.game.answeredAllQuestions);
     app.get('/game/report/:id', auth.isAuthenticated, controllers.game.reportGet);
     app.post('/game/report/:id', auth.isAuthenticated, controllers.game.reportPost);
@@ -24,12 +25,14 @@ module.exports = (app) => {
     app.get('/users/login', controllers.users.loginGet);
     app.post('/users/login', controllers.users.loginPost);
     app.get('/users/logout', controllers.users.logout);
+    app.post('/users/profile/edit/:id', controllers.users.editProfile);
 
     app.get('/administration', auth.isInRole("Admin"), controllers.admin.adminHome);
     app.get('/administration/users', auth.isInRole("Admin"), controllers.admin.listUsers);
     app.get('/administration/users/:id', auth.isInRole("Admin"), controllers.admin.getCurrentUser);
     app.post('/administration/users/makeadmin/:id', auth.isInRole("Admin"), controllers.admin.makeAdmin);
     app.post('/administration/users/removeadmin/:id', auth.isInRole("Admin"), controllers.admin.removeAdmin);
+    app.post('/administration/users/delete/:id', auth.isInRole("Admin"), controllers.admin.removeUser);
     app.get('/administration/questions', auth.isInRole("Admin"), controllers.admin.questionsMainGet);
     app.get('/administration/questions/search', auth.isInRole("Admin"), controllers.admin.questionsSearch);
     app.get('/administration/questions/add', auth.isInRole("Admin"), controllers.admin.addQuestionGet);
@@ -39,7 +42,6 @@ module.exports = (app) => {
 
     app.get('/administration/questions/edit/:id', auth.isInRole("Admin"), controllers.admin.editQuestionGet);
     app.post('/administration/questions/edit/:id', auth.isInRole("Admin"), controllers.admin.editQuestionPost);
-    app.get('/administration/questions/getById', auth.isInRole("Admin"), controllers.admin.getQuestionById);
     app.get('/administration/reports', auth.isInRole("Admin"), controllers.admin.listReports);
     app.get('/administration/reports/delete/:id', auth.isInRole("Admin"), controllers.admin.deleteReport);
 
@@ -68,7 +70,9 @@ module.exports = (app) => {
     app.get('/forum/questions/:id', auth.isAuthenticated, controllers.forum.getQuestionById);
     app.get('/forum/:subject', auth.isAuthenticated, controllers.forum.filteredBySubjectGet);
     app.post('/forum/comments/add/:id', auth.isAuthenticated, controllers.forum.createCommentPost);
+    app.get('/forum/questions/like/main/:id', auth.isAuthenticated, controllers.forum.likeQuestionPostFromMain);
     app.get('/forum/questions/like/:id', auth.isAuthenticated, controllers.forum.likeQuestionPost);
+    app.get('/forum/questions/dislike/main/:id', auth.isAuthenticated, controllers.forum.dislikeQuestionPostFromMain);
     app.get('/forum/questions/dislike/:id', auth.isAuthenticated, controllers.forum.dislikeQuestionPost);
     app.get('/forum/comments/like/:commentId/:questionId', auth.isAuthenticated, controllers.forum.likeCommentPost);
     app.get('/forum/comments/dislike/:commentId/:questionId', auth.isAuthenticated, controllers.forum.dislikeCommentPost);

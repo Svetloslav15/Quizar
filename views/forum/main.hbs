@@ -19,16 +19,20 @@
                             <h3 class="mr-auto">{{title}}</h3>
                         </a>
                         <div class="row p-3 link-dark">
-                            <h4 class="mr-1 font-weight-bold">{{likes}}</h4>
-                            <i class="far fa-thumbs-up two-em-font-size"></i>
-                            <h4 class="mr-1 font-weight-bold">{{dislikes}}</h4>
-                            <i class="far fa-thumbs-down two-em-font-size"></i>
+                            <a href="/forum/questions/like/main/{{_id}}" class="link-dark row mr-3">
+                                <h4 class="mr-1 font-weight-bold">{{likes}}</h4>
+                                <i class="far fa-thumbs-up two-em-font-size"></i>
+                            </a>
+                            <a href="/forum/questions/dislike/main/{{_id}}" class="link-dark row">
+                                <h4 class="mr-1 font-weight-bold">{{dislikes}}</h4>
+                                <i class="far fa-thumbs-down two-em-font-size"></i>
+                            </a>
                         </div>
                     </div>
                     <p>{{content}}</p>
                     {{#if isAdmin}}
                         <a href="/forum/questions/delete/{{_id}}">
-                            <button class="btn btn-danger mb-2 mr-auto">DELETE</button>
+                            <button class="btn btn-danger mb-2 mr-auto">Изтрии</button>
                         </a>
                     {{/if}}
                 </div>

@@ -14,11 +14,14 @@ module.exports = {
         let subject = req.body.subject;
         req.session.subject = subject;
         req.session.questions = [];
+        req.session.lives = 3;
         res.redirect('/game/play');
     },
     play: async (req, res) => {
         let category = req.session.subject;
         let questionsUsed = req.session.questions;
+        let livesCount = req.session.lives;
+
         let question = '';
         let questions = await Question.find({});
         if (category !== 'all') {
@@ -33,7 +36,11 @@ module.exports = {
         let min = 0;
         let max = questions.length - 1;
         question = questions[Math.floor(Math.random() * (max - min)) + min];
-        res.render('game/main', question);
+        let lives = [];
+        for (let i = 0; i < livesCount; i++) {
+            lives.push(1);
+        }
+        res.render('game/main', {question, lives});
     },
     answerQuestion: async (req, res) => {
         let questionId = req.params.questionId;
@@ -51,6 +58,26 @@ module.exports = {
         }
     },
     gameOver: async (req, res) => {
+        let id = req.user._id;
+        let user = await Student.findById(id);
+        if (!user){
+            user = await Teacher.findById(id);
+        }
+        user.points -= 5;
+        if (user.points < 0){
+            user.points = 0;
+        }
+        user.save();
+
+        let lives = req.session.lives - 1;
+        req.session.lives--;
+        if (+lives === 0){
+            res.render('game/gameOver');
+            return;
+        }
+        res.redirect('/game/play');
+    },
+    gameOverOver: async (req, res) => {
         let id = req.user._id;
         let user = await Student.findById(id);
         if (!user){
