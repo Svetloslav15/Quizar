@@ -20,7 +20,6 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.17.2",
-    "chart.js": "^2.8.0",
     "cookie-parser": "1.4.3",
     "express": "4.15.3",
     "express-handlebars": "3.0.0",
