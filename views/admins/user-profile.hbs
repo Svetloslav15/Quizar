@@ -30,7 +30,7 @@
                             <h4 class="border-white p-3 bg-blue text-white link-white border-rounded btn-shadow">
                                 <form id="make-admin-form" action="/administration/users/removeadmin/{{user._id}}" method="post"></form>
                                 <a href="javascript:document.getElementById('make-admin-form').submit()" class="text-white">
-                                    Премахни Администратор
+                                    Премахни Администраторски права
                                 </a>
                             </h4>
                         {{else}}
@@ -41,6 +41,14 @@
                                 </a>
                             </h4>
                         {{/if}}
+                    </label>
+                    <label class="col-lg-12 mt-2">
+                        <h4 class="border-white p-3 bg-blue text-white link-white border-rounded btn-shadow" id="z">
+                            <form id="delete-user-form" action="/administration/users/delete/{{user._id}}" method="post"></form>
+                            <a href="javascript:document.getElementById('delete-user-form').submit()" class="text-white">
+                                Изтрии Потребител
+                            </a>
+                        </h4>
                     </label>
                 </div>
             </div>

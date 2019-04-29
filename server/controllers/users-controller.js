@@ -22,12 +22,12 @@ module.exports = {
         let hashedPassword = encryption.generateHashedPassword(salt, password);
         //VALIDATION
         if (!username || !firstName || !lastName || !email){
-            res.locals.errorMessage = "Invalid input models!";
+            res.locals.errorMessage = "Невалидни данни!";
             res.render('users/register', {reqUser});
             return;
         }
         if (password !== repeatedPassword || password === "") {
-            res.locals.errorMessage = "Passwords don't match!";
+            res.locals.errorMessage = "Паролите не съответстват!";
             res.render('users/register', {reqUser});
             return;
         }
@@ -45,7 +45,7 @@ module.exports = {
                 }
             });
         if (usernameExists){
-            res.locals.errorMessage = "Username already exists!";
+            res.locals.errorMessage = "Потребителското име не съществува!";
             reqUser.username = "";
             res.render('users/register', {reqUser});
             return;
@@ -69,7 +69,7 @@ module.exports = {
                         res.render('users/register', user);
                         return;
                     }
-                    res.locals.successMessage = "Register successfully!";
+                    res.locals.successMessage = "Успешна регистрация!";
                     res.redirect('/');
                 })
             });
@@ -94,7 +94,7 @@ module.exports = {
                         res.render('users/register', user);
                         return;
                     }
-                    res.locals.successMessage = "Register successfully!";
+                    res.locals.successMessage = "Успешна регистрация!";
                     res.redirect('/')
                 })
             });
@@ -110,7 +110,7 @@ module.exports = {
     loginPost: async function (req, res) {
         let reqUser = req.body;
         if (reqUser.username.trim() === "") {
-            res.render('users/login', {errorMessage: 'Cannot login without username!'});
+            res.render('users/login', {errorMessage: 'Не можеш да влезеш без потребителско име!'});
             return;
         }
         let user = await Teacher.findOne({username: reqUser.username});
@@ -118,7 +118,7 @@ module.exports = {
             user = await Student.findOne({username: reqUser.username});
         }
         if (!user){
-            res.locals.errorMessage = 'Invalid user models';
+            res.locals.errorMessage = 'Невалидни данни!';
             res.render('users/login');
             return;
         }
@@ -126,18 +126,40 @@ module.exports = {
         let userHashedPassword = user.hashedPassword;
         let reqHashedPassword = encryption.generateHashedPassword(userSalt, reqUser.password);
         if (userHashedPassword !== reqHashedPassword) {
-            res.render('users/login', {errorMessage: 'Invalid username or password!', username: reqUser.username, password: reqUser.password});
+            res.render('users/login', {errorMessage: 'Невалидни данни!', username: reqUser.username, password: reqUser.password});
             return;
         }
         else {
             req.logIn(user, (err, user) => {
                 if (err) {
-                    res.render('users/login', {errorMessage: 'Invalid username or password'});
+                    res.render('users/login', {errorMessage: 'Невалидни данни!'});
                     return;
                 }
-                res.locals.successMessage = "Register successfully!";
+                res.locals.successMessage = "Успешна регистрация!";
                 res.redirect('/');
             })
         }
+    },
+    editProfile: async (req, res) => {
+        let id = req.params.id;
+        let username = req.body.username;
+        let firstName = req.body.firstName;
+        let lastName = req.body.lastName;
+        let email = req.body.email;
+        if (username.trim() === "" || firstName.trim() === "" ||
+            lastName.trim() === "" || email.trim() === ""){
+            res.redirect('/myProfile/' + id);
+            return;
+        }
+        let user = await Student.findById(id);
+        if (!user){
+            user = await Teacher.findById(id);
+        }
+        user.username = username;
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.email = email;
+        user.save();
+        res.redirect('/myProfile/' + id);
     }
 };

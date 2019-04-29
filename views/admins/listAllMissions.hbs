@@ -15,17 +15,17 @@
                                 <td class="border border-white h5 bg-darkblue p-3">{{rank}}.</td>
                                 <td class="border border-white h5 bg-darkblue p-3">{{description}}</td>
                                 <td class="border border-white h5 p-3">
-                                    <a href="/administration/missions/edit/{{_id}}" class="btn btn-warning m-1">Edit</a>
+                                    <a href="/administration/missions/edit/{{_id}}" class="btn btn-warning m-1">Промени</a>
                                     <a href="/administration/missions/delete/{{_id}}"
-                                       class="btn btn-danger m-1">Delete</a>
+                                       class="btn btn-danger m-1">Изтрии</a>
                                 </td>
                             </tr>
                         </div>
                     </div>
                 {{/each}}
             </table>
-            {{else}}
-        <h2 class="text-center mx-auto my-2 h3">Все още няма мисии</h2>
+        {{else}}
+            <h2 class="text-center mx-auto my-2 h3">Все още няма мисии</h2>
         {{/if}}
     </section>
 </section>

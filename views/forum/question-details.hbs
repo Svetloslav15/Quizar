@@ -2,6 +2,7 @@
     <section class="col-md-3">
         <ul class="list-group">
             <a href="/forum?page=1" class="btn btn-outline-info mb-3"><- Назад</a>
+            <a href="/forum/create" class="btn btn-outline-info mb-3">Нов Въпрос + </a>
             {{#each elements}}
                 <li class="list-group-item list-group-item-action">
                     <a href="/forum/{{key}}?page=1" class="forum-a">{{value}}</a>
@@ -65,7 +66,7 @@
                     <p>{{comment}}</p>
                     {{#if isAdmin}}
                         <a href="/forum/comments/delete/{{_id}}/{{questionId}}" class="mr-auto">
-                            <button class="btn btn-danger mb-2 mr-auto">DELETE</button>
+                            <button class="btn btn-danger mb-2 mr-auto">Изтрии</button>
                         </a>
                     {{/if}}
                 </div>

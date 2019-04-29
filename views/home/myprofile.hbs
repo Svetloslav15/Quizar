@@ -5,28 +5,43 @@
             <div class="col-lg-5">
                 <i class="fas fa-user size-10  mt-5 m-3" id="profile-icon-user"></i>
             </div>
-            <div class="col-lg-6 mt-3">
-                <div class="col">
-                    <label class="col-lg-12">
-                        <h4>Потребителско име: {{user.username}}</h4>
-                    </label>
-                    <label class="col-lg-12">
-                        <h4>Име: {{user.firstName}}</h4>
-                    </label>
-                    <label class="col-lg-12">
-                        <h4>Фамилия: {{user.lastName}}</h4>
-                    </label>
-                    <label class="col-lg-12">
-                        <h4>Роли: {{user.roles}}</h4>
-                    </label>
-                    <label class="col-lg-12">
-                        <h4>Поща: {{user.email}}</h4>
-                    </label>
-                    <label class="col-lg-12">
-                        <h4>Точки: {{user.points}}</h4>
-                    </label>
-                </div>
-            </div>
+                <form action="/users/profile/edit/{{user._id}}" method="post" class="col-lg-6 mt-3">
+                    <div class="col">
+                        <label class="col-lg-12">
+                            <div class="input-group p-2">
+                                <span class="input-group-text text-dark" id="inputGroup-sizing-default">Потребителско име: <input type="text" class="p-2 ml-2" name="username" value="{{user.username}}"/></span>
+                            </div>
+                        </label>
+                        <label class="col-lg-12">
+                            <div class="input-group p-2">
+                                <span class="input-group-text text-dark" id="inputGroup-sizing-default">Име: <input class="p-2 ml-2" type="text" name="firstName" value="{{user.firstName}}"/></span>
+                            </div>
+                        </label>
+                        <label class="col-lg-12">
+                            <div class="input-group p-2">
+                                <span class="input-group-text text-dark  mr-2" id="inputGroup-sizing-default">Фамилия: <input class="p-2 ml-2" type="text" name="lastName" value="{{user.lastName}}"/></span>
+                            </div>
+                        </label>
+                        <label class="col-lg-12">
+                            <div class="input-group p-2">
+                                <span class="input-group-text text-dark" id="inputGroup-sizing-default">Роли: {{user.roles}}</span>
+                            </div>
+                        </label>
+                        <label class="col-lg-12">
+                            <div class="input-group p-2">
+                                <span class="input-group-text text-dark" id="inputGroup-sizing-default">Поща: <input class="p-2 ml-2" type="text" name="email" value="{{user.email}}"/></span>
+                            </div>
+                        </label>
+                        <label class="col-lg-12">
+                            <div class="input-group p-2">
+                                <span class="input-group-text text-dark" id="inputGroup-sizing-default">Точки: {{user.points}}</span>
+                            </div>
+                        </label>
+                        <label class="col-lg-12 text-center">
+                            <input type="submit" class="btn btn-outline-warning" value="Промени профил">
+                        </label>
+                    </div>
+                </form>
 
             </table>
         </section>

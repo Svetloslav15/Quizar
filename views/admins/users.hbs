@@ -16,11 +16,11 @@
     </section>
     <ul class="pagination justify-content-center mx-auto mt-3">
         {{#if previousPage}}
-            <li class="page-item"><a class="page-link" href="/rankings?page={{previousPage}}">Назад</a></li>
+            <li class="page-item"><a class="page-link" href="/administration/users?page={{previousPage}}">Назад</a></li>
         {{/if}}
         <li class="page-item"><a class="page-link page-link" href="#">{{currentPage}}</a></li>
         {{#if nextPage}}
-            <li class="page-item"><a class="page-link" href="/rankings?page={{nextPage}}">Напред</a></li>
+            <li class="page-item"><a class="page-link" href="/administration/users?page={{nextPage}}">Напред</a></li>
         {{/if}}
     </ul>
 </section>

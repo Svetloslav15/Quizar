@@ -15,8 +15,8 @@
                             <td class="border border-white h5 bg-darkblue p-3">{{rank}}.</td>
                             <td class="border border-white h5 bg-darkblue p-3">{{description}}</td>
                             <td class="border border-white h5 p-3">
-                                <a href="/teachers/questions/edit/{{_id}}" class="btn btn-warning m-1">Edit</a>
-                                <a href="/teachers/questions/delete/{{_id}}" class="btn btn-danger m-1">Delete</a>
+                                <a href="/teachers/questions/edit/{{_id}}" class="btn btn-warning m-1">Промени</a>
+                                <a href="/teachers/questions/delete/{{_id}}" class="btn btn-danger m-1">Изтрии</a>
                             </td>
                         </tr>
                     </div>
@@ -26,11 +26,11 @@
     </section>
     <ul class="pagination justify-content-center mx-auto mt-3">
         {{#if previousPage}}
-            <li class="page-item"><a class="page-link" href="/teachers/questions?page={{previousPage}}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="/teachers/questions?page={{previousPage}}">Назад</a></li>
         {{/if}}
         <li class="page-item"><a class="page-link page-link" href="#">{{currentPage}}</a></li>
         {{#if nextPage}}
-            <li class="page-item"><a class="page-link" href="/teachers/questions?page={{nextPage}}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="/teachers/questions?page={{nextPage}}">Напред</a></li>
         {{/if}}
     </ul>
 </section>

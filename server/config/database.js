@@ -7,6 +7,7 @@ const ForumQuestion = require('../models/Forum-Question');
 const ForumComment = require('../models/Forum-Comment');
 const Report = require('../models/Report');
 const Mission = require('../models/DailyMission');
+const Statistic = require('../models/Statistic');
 
 mongoose.Promise = global.Promise;
 
@@ -18,9 +19,7 @@ module.exports = (settings) => {
     if (err) {
       throw err;
     }
-
     console.log('MongoDB ready!')
-
   });
 
   db.on('error', err => console.log(`Database error: ${err}`))

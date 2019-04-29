@@ -19,13 +19,16 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.17.2",
+    "chart.js": "^2.8.0",
     "cookie-parser": "1.4.3",
     "express": "4.15.3",
     "express-handlebars": "3.0.0",
     "express-session": "1.15.3",
+    "jquery": "^3.3.1",
     "mongoose": "4.10.4",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "sweetalert": "^2.1.2"
   }
 }

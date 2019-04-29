@@ -1,43 +1,57 @@
 <div class="section-area shadow-div container mx-auto mt-5 jumbotron ">
-    <p id="timer" class="text-white h2 mb-1 ml-auto bg-danger p-3 border-rounded d-inline-block">10</p>
-    <div name="description" class="shadow p-3 bg-skyblue text-white m-1">
-        {{description}}
+    <div class="row">
+        <div class="col-2">
+            <h4 class="m-2 text-center">Брояч</h4>
+            <p id="timer" class="text-white h2 text-center bg-danger p-3 border-rounded d-inline-block" style="margin-left: 20%">10</p>
+        </div>
+        <div class="col-7">
+            <h3 class="text-center mt-3">Въпрос</h3>
+        </div>
+        <div class="col-3" style="font-size: 3em">
+            <h4 class="m-2 text-center">Животи</h4>
+            {{#each lives}}
+                ❤️
+            {{/each}}
+        </div>
+    </div>
+    <div name="description" class="shadow p-3 bg-skyblue text-white">
+        {{question.description}}
     </div>
     <div class="row text-center mx-auto mt-4">
         <div class="col-lg-5 bg-skyblue text-white mx-5 p-3 m-1">
-            <a href="/game/answer/{{_id}}/{{answerA}}" class="link-white">
-                A: {{answerA}}
+            <a href="/game/answer/{{question._id}}/{{question.answerA}}" class="link-white">
+                A: {{question.answerA}}
             </a>
         </div>
         <div class="col-lg-5 bg-skyblue text-white p-3 m-1">
-            <a href="/game/answer/{{_id}}/{{answerB}}" class="link-white">
-                Б: {{answerB}}
+            <a href="/game/answer/{{question._id}}/{{question.answerB}}" class="link-white">
+                Б: {{question.answerB}}
             </a>
         </div>
     </div>
     <div class="row text-center mx-auto mt-4">
         <div class="col-lg-5 bg-skyblue text-white mx-5 p-3 m-1">
-            <a href="/game/answer/{{_id}}/{{answerC}}" class="link-white">
-                В: {{answerC}}
+            <a href="/game/answer/{{question._id}}/{{question.answerC}}" class="link-white">
+                В: {{question.answerC}}
             </a>
         </div>
         <div class="col-lg-5 bg-skyblue text-white p-3 m-1">
-            <a href="/game/answer/{{_id}}/{{answerD}}" class="link-white">
-                Г: {{answerD}}
+            <a href="/game/answer/{{question._id}}/{{question.answerD}}" class="link-white">
+                Г: {{question.answerD}}
             </a>
         </div>
     </div>
     <div class="text-center rounded-circle">
         <div class="col-lg-2 btn btn-danger p-2 mt-4">
-            <a href="/game/report/{{_id}}" class="link-white">
-                Репорт
+            <a href="/game/report/{{question._id}}" class="link-white">
+                Докладвай грешка
             </a>
         </div>
     </div>
 </div>
 <script>
     setTimeout(function () {
-        window.location = "/game/over";
+        window.location = "/game/over/over";
     }, 10000)
 </script>
 

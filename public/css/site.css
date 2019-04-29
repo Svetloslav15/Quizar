@@ -368,6 +368,10 @@ table{
 .link-dark:hover{
     color: #FC8735;
 }
+.btn-orange{
+    background: #FF8935;
+    color: white;
+}
 .comment-likes-d, .comment-likes-d:hover{
     color: white;
 }
