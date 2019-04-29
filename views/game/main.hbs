@@ -1,11 +1,20 @@
 <div class="section-area shadow-div container mx-auto mt-5 jumbotron ">
-    <p id="timer" class="text-white h2 mb-1 ml-auto bg-danger p-3 border-rounded d-inline-block">10</p>
-    <div style="float: right; font-size: 3em;">
-        {{#each lives}}
-            ❤️
-        {{/each}}
+    <div class="row">
+        <div class="col-2">
+            <h4 class="m-2 text-center">Брояч</h4>
+            <p id="timer" class="text-white h2 text-center bg-danger p-3 border-rounded d-inline-block" style="margin-left: 20%">10</p>
+        </div>
+        <div class="col-7">
+            <h3 class="text-center mt-3">Въпрос</h3>
+        </div>
+        <div class="col-3" style="font-size: 3em">
+            <h4 class="m-2 text-center">Животи</h4>
+            {{#each lives}}
+                ❤️
+            {{/each}}
+        </div>
     </div>
-    <div name="description" class="shadow p-3 bg-skyblue text-white m-1">
+    <div name="description" class="shadow p-3 bg-skyblue text-white">
         {{question.description}}
     </div>
     <div class="row text-center mx-auto mt-4">

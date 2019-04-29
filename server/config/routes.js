@@ -19,6 +19,7 @@ module.exports = (app) => {
     app.get('/game/answeredAllQuestions', auth.isAuthenticated, controllers.game.answeredAllQuestions);
     app.get('/game/report/:id', auth.isAuthenticated, controllers.game.reportGet);
     app.post('/game/report/:id', auth.isAuthenticated, controllers.game.reportPost);
+    app.get('/game/statistics', auth.isAuthenticated, controllers.game.gameStatisticsGet);
 
     app.get('/users/register', controllers.users.registerGet);
     app.post('/users/register', controllers.users.registerPost);

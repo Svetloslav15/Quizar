@@ -1,0 +1,23 @@
+<section class="container mx-auto mt-5 jumbotron section-shadow section-area">
+    <h1 class="h2 text-center border-bottom border-dark pb-3 mb-2 text-blue">Статистика</h1>
+    <section id="">
+
+    </section>
+    <section class="row text-center ml-auto">
+        {{#if statistics}}
+            <table class="bg-skyblue text-white">
+                <tr class="">
+                    <th class="border border-white bg-darkblue"></th>
+                    <th class="border border-white bg-darkblue p-1">Потребител</th>
+                    <th class="border border-white bg-darkblue p-1">Брой верни отговори</th>
+                    <th class="border border-white bg-darkblue p-1">Брой грешни отговори</th>
+                </tr>
+                {{#each statistics}}
+                    {{> statistic}}
+                {{/each}}
+            </table>
+        {{else}}
+            <h2 class="text-center my-3 mx-auto">Още нямате изиграни игри!</h2>
+        {{/if}}
+    </section>
+</section>
