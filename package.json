@@ -8,6 +8,7 @@
     "npm": "4.2.0"
   },
   "keywords": [
+    "heroku",
     "blog",
     "system"
   ],
