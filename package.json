@@ -13,8 +13,7 @@
     "system"
   ],
   "scripts": {
-    "start": "node index.js",
-    "build": "node index.js"
+    "start": "node index.js"
   },
   "author": "IK",
   "license": "MIT",
