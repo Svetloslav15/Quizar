@@ -13,7 +13,8 @@
     "system"
   ],
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "node index.js"
   },
   "author": "IK",
   "license": "MIT",
@@ -30,5 +31,6 @@
     "passport-local": "1.0.0",
     "socket.io": "^2.1.1",
     "sweetalert": "^2.1.2"
-  }
+  },
+  "heroku-run-build-script": true
 }
