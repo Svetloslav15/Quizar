@@ -1,5 +1,5 @@
-const passport = require('passport')
-const LocalPassport = require('passport-local')
+const passport = require('passport');
+const LocalPassport = require('passport-local');
 const User = require('mongoose').model('User');
 const Teacher = require('mongoose').model('Teacher');
 const Student = require('mongoose').model('Student');

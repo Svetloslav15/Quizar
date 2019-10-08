@@ -7,11 +7,11 @@ const game = require('./game-controller');
 const mission = require('./mission-controller');
 
 module.exports = {
-    home: home,
-    users: users,
-    admin: admin,
-    teachers: teachers,
-    forum: forum,
-    game: game,
-    mission: mission
+    home,
+    users,
+    admin,
+    teachers,
+    forum,
+    game,
+    mission
 };
