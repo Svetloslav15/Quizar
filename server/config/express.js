@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const session = require('express-session');
+const cookieSession = require('cookie-session');
 const passport = require('passport');
 const expressHandlebars = require('express-handlebars');
 
@@ -14,11 +14,16 @@ module.exports = (app) => {
     app.set('view engine', '.hbs');
     app.use(cookieParser());
     app.use(bodyParser.urlencoded({extended: true}));
-    app.use(session({
-        secret: 'neshto-taino!@#$%',
-        resave: false,
-        saveUninitialized: false
-    }));
+    //app.use(session({
+    //    secret: 'neshto-taino!@#$%',
+    //    resave: false,
+    //    saveUninitialized: false
+    //}));
+
+    app.use(cookieSession({
+        name: 'session',
+        keys: ['neshto-taino!@#$%'],
+    }))
     app.use(passport.initialize());
     app.use(passport.session());
 
