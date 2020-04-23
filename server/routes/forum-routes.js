@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const controllers = require('../controllers/index');
 const auth = require('../config/auth');
+const ROLES = require('../common/roles');
 
 router.get('/', auth.isAuthenticated, controllers.forum.mainGet);
 router.get('/create', auth.isAuthenticated, controllers.forum.createGet);
@@ -15,7 +16,7 @@ router.get('/questions/dislike/main/:id', auth.isAuthenticated, controllers.foru
 router.get('/questions/dislike/:id', auth.isAuthenticated, controllers.forum.dislikeQuestionPost);
 router.get('/comments/like/:commentId/:questionId', auth.isAuthenticated, controllers.forum.likeCommentPost);
 router.get('/comments/dislike/:commentId/:questionId', auth.isAuthenticated, controllers.forum.dislikeCommentPost);
-router.get('/questions/delete/:id', auth.isInRole('Admin'), controllers.forum.deleteQuestionById);
-router.get('/comments/delete/:commentId/:questionId', auth.isInRole('Admin'), controllers.forum.deleteCommentId);
+router.get('/questions/delete/:id', auth.isInRole(ROLES.Admin), controllers.forum.deleteQuestionById);
+router.get('/comments/delete/:commentId/:questionId', auth.isInRole(ROLES.Admin), controllers.forum.deleteCommentId);
 
 module.exports = router;

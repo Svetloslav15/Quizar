@@ -1,6 +1,7 @@
 {
   "name": "Quizar",
   "version": "1.0.0",
+  "author": "IK",
   "description": "quizar",
   "main": "index.js",
   "engines": {
@@ -10,22 +11,25 @@
   "keywords": [
     "heroku",
     "blog",
-    "system"
+    "quizar",
+    "education",
+    "game",
+    "school",
+    "ranking"
   ],
   "scripts": {
     "start": "node index.js",
     "build": "node index.js"
   },
-  "author": "IK",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "1.17.2",
+    "body-parser": "^1.19.0",
     "cookie-parser": "1.4.3",
     "cookie-session": "^1.3.3",
-    "express": "4.15.3",
+    "express": "^4.17.1",
     "express-handlebars": "3.0.0",
-    "express-session": "1.15.3",
-    "jquery": "^3.3.1",
+    "express-session": "^1.17.1",
+    "jquery": "^3.5.0",
     "mongoose": "4.10.4",
     "passport": "0.3.2",
     "passport-local": "1.0.0",

@@ -9,7 +9,9 @@ require('./server/config/routes')(app);
 require('./server/config/passport')();
 
 //Start the server
-const server = app.listen(settings.port);
+const server = app.listen(settings.port, () => {
+    console.log(`Server listening on port ${settings.port}...`);
+});
 const io = socket(server);
 
 //Sockets workplace
@@ -22,4 +24,3 @@ io.on("connection", function (socket) {
         socket.broadcast.emit('typing', data);
     });
 });
-console.log(`Server listening on port ${settings.port}...`);
